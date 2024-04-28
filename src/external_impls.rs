@@ -183,6 +183,17 @@ mod tokio_net_impl {
     );
 }
 
+#[cfg(feature = "uuid")]
+mod tokio_net_impl {
+    use crate::known_deep_size;
+    use uuid::{Uuid, fmt::{Hyphenated, Braced, Simple, Urn}};
+
+    known_deep_size!(0;
+        Uuid, Hyphenated, Braced,
+        Simple, Urn
+    );
+}
+
 #[cfg(feature = "actix")]
 mod actix_impl {
     use crate::{Context, DeepSizeOf};
